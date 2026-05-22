@@ -27,5 +27,6 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["src", "api", "prisma/seed.ts", "vite.config.ts"]
+  "include": ["src"]
 }
+
