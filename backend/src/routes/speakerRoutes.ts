@@ -1,0 +1,16 @@
+import { Router } from 'express';
+import {
+  getAllSpeakers,
+  createSpeaker,
+  updateSpeaker,
+  deleteSpeaker
+} from '../controllers/speakerController';
+
+const router = Router();
+
+router.get('/', getAllSpeakers);
+router.post('/', createSpeaker);
+router.put('/:id', updateSpeaker);
+router.delete('/:id', deleteSpeaker);
+
+export default router;
