@@ -5,6 +5,14 @@ import { PrismaClient } from '@prisma/client';
 const app = express();
 const prisma = new PrismaClient();
 
+// Test database connection
+prisma.$connect()
+  .then(() => console.log('[Prisma] Database connected successfully'))
+  .catch((err) => {
+    console.error('[Prisma] Database connection failed:', err.message);
+    process.exit(1);
+  });
+
 // Middleware
 const allowedOrigin = process.env.CORS_ORIGIN || '*';
 app.use(cors({
@@ -297,10 +305,15 @@ app.delete('/api/events/:id', async (req, res) => {
   }
 });
 
-// Listen on PORT
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`[Express] Backend API running on port ${PORT}`);
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3001;
+
+// Root Endpoint for Health Checks (Railway often pings /)
+app.get('/', (req, res) => {
+  res.send('Backend API is running. Go to /api/status for more info.');
+});
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`[Express] Backend API running on port ${PORT} host 0.0.0.0`);
 });
 
 // Export app instance (used as serverless function)
