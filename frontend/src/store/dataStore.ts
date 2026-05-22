@@ -1,6 +1,16 @@
 import { create } from 'zustand';
 
-const API_URL = '';
+// Determine API URL based on environment
+const getApiUrl = () => {
+  // In production (Railway), use environment variable or relative path
+  if (import.meta.env.PROD) {
+    return import.meta.env.VITE_API_URL || '/api';
+  }
+  // In development, use relative path (proxied by Vite)
+  return '/api';
+};
+
+const API_URL = getApiUrl();
 
 export interface Category {
   id: number;

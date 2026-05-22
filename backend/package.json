@@ -9,8 +9,9 @@
     "start": "node dist/api/index.js",
     "postinstall": "prisma generate",
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev",
-    "prisma:seed": "prisma db seed"
+    "prisma:migrate": "prisma migrate deploy",
+    "prisma:seed": "prisma db seed",
+    "setup": "prisma migrate deploy && prisma db seed"
   },
   "dependencies": {
     "@prisma/client": "^5.14.0",
