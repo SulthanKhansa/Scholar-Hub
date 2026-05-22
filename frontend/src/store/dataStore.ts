@@ -10,7 +10,8 @@ const getApiUrl = () => {
   return '/api';
 };
 
-const API_URL = getApiUrl();
+const rawUrl = getApiUrl();
+const API_URL = rawUrl.endsWith('/') ? rawUrl.slice(0, -1) : rawUrl;
 
 export interface Category {
   id: number;
