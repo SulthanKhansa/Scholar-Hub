@@ -1,0 +1,2 @@
+[build]
+cmds = ["npm ci", "npm run build"]
