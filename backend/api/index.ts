@@ -297,13 +297,11 @@ app.delete('/api/events/:id', async (req, res) => {
   }
 });
 
-// Export app instance (used as serverless function by Vercel)
-export default app;
+// Listen on PORT
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`[Express] Backend API running on port ${PORT}`);
+});
 
-// Listen locally if run directly
-if (process.env.NODE_ENV !== 'production') {
-  const PORT = process.env.PORT || 3001;
-  app.listen(PORT, () => {
-    console.log(`[Express] Backend API running at http://localhost:${PORT}`);
-  });
-}
+// Export app instance (used as serverless function)
+export default app;
