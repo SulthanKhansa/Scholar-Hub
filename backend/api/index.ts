@@ -313,7 +313,7 @@ app.get('/', (req, res) => {
   res.send('Backend API is running. Go to /api/status for more info.');
 });
 
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(Number(PORT), '0.0.0.0', () => {
   console.log(`[Express] Backend API running on port ${PORT} host 0.0.0.0`);
 });
 
