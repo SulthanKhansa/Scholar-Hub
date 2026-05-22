@@ -305,7 +305,8 @@ app.delete('/api/events/:id', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3001;
+// Use simple OR assignment so Nixpacks correctly detects the fallback port
+const PORT = process.env.PORT || 8080;
 
 // Root Endpoint for Health Checks (Railway often pings /)
 app.get('/', (req, res) => {
